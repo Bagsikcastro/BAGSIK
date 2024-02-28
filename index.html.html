@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+    <title>Bagsik</title>
+</head>
+  <body >
+    <style>
+        input{
+            width: 50%;
+            padding: 9px 20px;
+            margin: 5px 0;
+            box-sizing: border-box;
+
+        }
+        body {
+            background-image: url('https://img.freepik.com/free-photo/nature-beauty-summer-multi-colored-flowers-meadow-generated-by-ai_188544-10114.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1708560000&semt=ais');
+             background-size: cover; 
+            font-family: "Copperplate Gothic Bold";
+            font-size: 18px;
+            text-align: center; 
+            color: #d3e2d8; 
+        }
+
+        img {
+            max-width: 1000px; 
+            height: auto;
+            display: block;
+            margin: 0 auto; 
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table, th, td {
+            border: 1px solid #000000;
+          
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+       
+
+        .button {
+            background-color: #bd893c; 
+            border: none;
+            color: white;
+            padding: 12px 22px;
+            text-align: center;
+            font-size: 12px;
+            margin: 4px 2px;
+            opacity:0.6;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+        .button:hover{opacity: 1}
+        
+        #gender{
+            font-size: 16px;
+            padding: 4px 100px;
+
+        }
+    </style>
+    </body>   <h1 style = "color: rgb(187, 31, 31)";>STUDENT DATASHEET</h1>
+        <div>
+            <label>Name: </label><br>
+            <input type="text" id="name"/>
+            <br><br>
+            <label>Address: </label><br>
+            <input type="text" id="address"/>
+            <br>
+            <br>
+            <label>Age: </label><br>
+            <input type="number" id="age"/>
+            <br>
+            <br>
+            
+            <label>Gender:  </label><br>
+            <select id="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+
+            </select>
+            <br>
+            <br>
+            <button onclick="add()">ADD</button>
+            <button onclick="clear_form()">CLEAR</button>
+            
+        </div>
+        <br>
+        <br>
+        <table   border ="1" class="table">
+            <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Gender</th>
+           <th>Action</th>
+            
+           
+            </tr>
+                <tbody id = "student_table">
+                
+            </tbody>
+            </table>
+    </body>
+    <script>
+            function add(){
+
+                const name=document.getElementById("name").value;
+                const address=document.getElementById("address").value;
+                const age=document.getElementById("age").value;
+                const gender=document.getElementById("gender").value;
+
+                const tr= document.createElement("tr");
+                const td_num= document.createElement("td");
+                const td_name= document.createElement("td");
+                const td_address= document.createElement("td");
+                const td_age= document.createElement("td");
+                const td_gender= document.createElement("td");
+                const td_button= document.createElement("button");
+                const td_edit= document.createElement("button");
+            
+              
+
+                td_num.innerText = generate_id();
+                td_name.innerText = name;
+                td_address.innerText= address;
+                td_age.innerText = age  + " "+ "years old";
+                td_gender.innerText = gender ;  
+                td_button.innerText= "REMOVE"  ; 
+                td_edit.innerText= " EDIT"  ; 
+               
+
+             
+                document.getElementById("name" ).value="";
+                document.getElementById("address" ).value="";
+                document.getElementById("age" ).value="";
+                document.getElementById("gender" ).value="";
+
+
+                td_button.addEventListener( "click", function (){
+                    tr.remove()
+                    
+                })
+
+                if(name =="" || address =="" || age =="" ){
+
+                   alert("Hapoton mo si Bagsik!");
+                    return;
+
+     } 
+      alert("Mabuhay ka hangga't gusto mo");    
+                
+               tr.appendChild(td_num);
+               tr.appendChild(td_name);
+               tr.appendChild(td_address);
+               tr.appendChild(td_age);
+               tr.appendChild(td_gender);
+               tr.appendChild( td_button);
+               tr.appendChild( td_edit);
+              
+                
+
+
+               const student_table = document.getElementById("student_table")
+
+               student_table.appendChild(tr);
+                
+           
+    
+ } 
+
+function generate_id(){
+    const random = Math.random() * 10000;
+    const rounded_off_random = Math.floor(random);
+    return rounded_off_random ;
+}
+
+ function clear_form   () {
+    
+    document.getElementById("name" ).value="";
+    document.getElementById("address" ).value="";
+    document.getElementById("age" ).value="";
+    document.getElementById("gender" ).value="";
+    
+ }
+
+
+ 
+ 
+
+    </script>
+ </html>
